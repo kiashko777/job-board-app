@@ -16,7 +16,8 @@
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img class="h-8 w-8" src="https://ui-avatars.com/api/?name=Job+Board&background=4f46e5&color=fff&rounded=true"
+                        <img class="h-8 w-8"
+                             src="https://ui-avatars.com/api/?name=Job+Board&background=4f46e5&color=fff&rounded=true"
                              alt="Job Board">
                     </div>
                     <div class="hidden md:block">
@@ -49,7 +50,8 @@
                                     <span class="absolute -inset-1.5"></span>
                                     <span class="sr-only">Open user menu</span>
                                     <img class="h-8 w-8 rounded-full"
-                                         src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff" alt="User Avatar">
+                                         src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff"
+                                         alt="User Avatar">
                                 </button>
                             </div>
                         </div>
@@ -92,7 +94,8 @@
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">
                     <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff" alt="User Avatar">
+                        <img class="h-10 w-10 rounded-full"
+                             src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff" alt="User Avatar">
                     </div>
                     <div class="ml-3">
                         <div class="text-base font-medium leading-none text-white">Guest User</div>
@@ -114,8 +117,11 @@
     </nav>
 
     <header class="bg-white shadow">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+            <a href="/jobs/create"
+               class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create
+                Job</a>
         </div>
     </header>
 
