@@ -14,12 +14,13 @@ use App\Models\Job;
 |
 */
 
-
+// Home page
 Route::get('/', function () {
     return view('home');
 
 });
 
+// List all jobs with pagination
 Route::get('/jobs', function () {
     $jobs = Job::with('employer')->latest()->paginate(10);
     return view('jobs.index', [
@@ -27,11 +28,13 @@ Route::get('/jobs', function () {
 });
 
 
+// Show job creation form
 Route::get('/jobs/create', function () {
     return view('jobs.create');
 });
 
 
+// Show single job details
 Route::get('/jobs/{id}', function ($id) {
     $job = Job::find($id);
     {
@@ -42,6 +45,7 @@ Route::get('/jobs/{id}', function ($id) {
 });
 
 
+// Store a new job listing
 Route::post('/jobs', function () {
     request()->validate([
     'title' => ['required', 'min:3'],
@@ -59,6 +63,44 @@ return redirect('/jobs');
 });
 
 
+// Show job edit form
+Route::get('/jobs/{id}/edit', function ($id) {
+    $job = Job::find($id);
+    {
+        return view('jobs.edit', [
+            'job' => $job
+        ]);
+    }
+});
+
+
+// Update an existing job listing
+Route::patch('/jobs/{id}', function ($id) {
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required'],
+    ]);
+
+    $job = Job::findOrFail($id);
+
+    $job->update([
+        'title' => request('title'),
+        'salary' => request('salary'),
+    ]);
+
+    return redirect('/jobs/'. $job->id);
+});
+
+
+// Delete a job listing
+Route::delete('/jobs/{id}', function ($id) {
+ $job = Job::findOrFail($id);
+ $job->delete();
+ return redirect('/jobs');
+});
+
+
+// Contact page
 Route::get('/contact', function () {
     return view('contact');
 });
