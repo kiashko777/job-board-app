@@ -1,17 +1,31 @@
 <!doctype html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
+    <title>Job Board</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'appwrite-dark': '#19191d',
+                        'appwrite-darker': '#0c0c0f',
+                        'appwrite-pink': '#fd366e',
+                        'appwrite-pink-hover': '#fc2359',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="h-full">
+<body class="h-full bg-appwrite-darker text-gray-100">
 <div class="min-h-full">
-    <nav class="bg-gray-800">
+    <nav class="bg-appwrite-dark border-b border-gray-800">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
@@ -116,11 +130,11 @@
         </div>
     </nav>
 
-    <header class="bg-white shadow">
+    <header class="bg-appwrite-dark border-b border-gray-800">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-100">{{ $heading }}</h1>
             <a href="/jobs/create"
-               class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create
+               class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-appwrite-pink hover:bg-appwrite-pink-hover transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appwrite-pink">Create
                 Job</a>
         </div>
     </header>
