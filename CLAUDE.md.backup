@@ -1,0 +1,123 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a Laravel 10 job board application built with:
+- **Backend**: Laravel 10.48.14, PHP 8.1+
+- **Frontend**: Blade templates with Tailwind CSS
+- **Database**: MySQL with Eloquent ORM
+- **Build Tools**: Vite for asset compilation
+- **Testing**: PHPUnit for backend tests
+
+## Key Commands
+
+### Development
+```bash
+# Start development server
+php artisan serve
+
+# Start Vite for frontend assets
+npm run dev
+
+# Build frontend assets for production
+npm run build
+
+# Database operations
+php artisan migrate                 # Run migrations
+php artisan migrate:fresh --seed    # Reset database and seed
+php artisan db:seed                 # Seed database with test data
+
+# Generate application key
+php artisan key:generate
+
+# Clear caches
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+### Code Quality
+```bash
+# Format code with Laravel Pint
+./vendor/bin/pint
+
+# Run tests
+php artisan test
+php artisan test --filter TestClassName
+php artisan test tests/Unit/SpecificTest.php
+```
+
+### Debugging
+```bash
+# List routes
+php artisan route:list
+
+# Interactive shell
+php artisan tinker
+
+# Generate IDE helper files (if installed)
+php artisan ide-helper:generate
+```
+
+## Architecture
+
+### Models & Database Structure
+- **Job** (`app/Models/Job.php`): Main job listing model
+  - Table: `job_listings`
+  - Relations: belongsTo Employer, belongsToMany Tags
+  - Key fields: title, salary, employer_id
+  
+- **Employer** (`app/Models/Employer.php`): Company posting jobs
+  - Relations: hasMany Jobs
+  
+- **Tag** (`app/Models/Tag.php`): Job categorization
+  - Many-to-many relationship with Jobs via pivot table
+  
+- **User** (`app/Models/User.php`): Standard Laravel auth user
+
+### Routing Pattern
+Routes defined in `routes/web.php`:
+- Simple closure-based routes returning views
+- No dedicated controllers yet (all logic in route closures)
+- Main routes: `/` (home), `/jobs` (listing), `/jobs/{id}` (detail), `/contact`
+
+### View Structure
+- **Layout**: `resources/views/components/layout.blade.php` - Main HTML wrapper
+- **Pages**: Individual Blade views in `resources/views/`
+- **Components**: Reusable Blade components in `resources/views/components/`
+- Uses Tailwind CSS for styling
+
+### Current Implementation Status
+- Basic job listing with pagination
+- Job detail pages
+- Employer relationship display
+- Tag system implemented at model level
+- No authentication system implemented yet
+- No job creation/editing interface
+- No admin panel
+
+## Development Patterns
+
+### Database Conventions
+- Use migrations for all schema changes
+- Factory pattern for test data generation
+- Seeder creates test user and sample jobs
+
+### Model Conventions
+- Use Eloquent relationships for data associations
+- Mass assignment protection via `$fillable`
+- Custom table names specified when not following Laravel conventions
+
+### View Conventions
+- Blade component-based architecture
+- Tailwind utility classes for styling
+- Component slots for flexible content injection
+
+## Testing Approach
+- Feature tests in `tests/Feature/`
+- Unit tests in `tests/Unit/`
+- Use factories for test data generation
+- Database refreshed between tests
