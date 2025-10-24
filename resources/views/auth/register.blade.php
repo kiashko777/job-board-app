@@ -13,30 +13,15 @@
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
-                        <label for="first_name" class="block text-sm font-medium leading-6 text-gray-200">First Name</label>
+                        <label for="name" class="block text-sm font-medium leading-6 text-gray-200">Name</label>
                         <div class="mt-2">
                             <div
                                 class="flex rounded-lg shadow-sm ring-1 ring-inset ring-gray-700 focus-within:ring-2 focus-within:ring-inset focus-within:ring-appwrite-pink sm:max-w-md bg-appwrite-dark">
-                                <input type="text" name="first_name" id="first_name"
+                                <input type="text" name="name" id="name"
                                        class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-100 placeholder:text-gray-500 focus:ring-0 sm:text-sm sm:leading-6"
-                                       placeholder="John" required>
+                                       placeholder="John Doe" required>
                             </div>
-                            @error('first_name')
-                            <div class="text-sm text-red-600 mt-2">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="sm:col-span-4">
-                        <label for="last_name" class="block text-sm font-medium leading-6 text-gray-200">Last Name</label>
-                        <div class="mt-2">
-                            <div
-                                class="flex rounded-lg shadow-sm ring-1 ring-inset ring-gray-700 focus-within:ring-2 focus-within:ring-inset focus-within:ring-appwrite-pink sm:max-w-md bg-appwrite-dark">
-                                <input type="text" name="last_name" id="last_name"
-                                       class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-100 placeholder:text-gray-500 focus:ring-0 sm:text-sm sm:leading-6"
-                                       placeholder="Doe" required>
-                            </div>
-                            @error('last_name')
+                            @error('name')
                             <div class="text-sm text-red-600 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
